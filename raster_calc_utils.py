@@ -1,4 +1,4 @@
-import numpy as np
+import np as np
 
 def convert_production_tons_to_caloric(crop_prod_array, calories_per_ton, nodata):
     """Calorie (i) production = Crop (i) production x KJ content of crop (i).

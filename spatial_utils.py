@@ -1,3 +1,5 @@
+import numpy as np
+
 def area_of_pixel(pixel_size, center_lat):
     """Calculate m^2 area of a wgs84 square pixel.
 
@@ -16,13 +18,13 @@ def area_of_pixel(pixel_size, center_lat):
     """
     a = 6378137  # meters
     b = 6356752.3142  # meters
-    e = numpy.sqrt(1-(b/a)**2)
+    e = np.sqrt(1-(b/a)**2)
     area_list = []
     for f in [center_lat+pixel_size/2, center_lat-pixel_size/2]:
-        zm = 1 - e*numpy.sin(numpy.radians(f))
-        zp = 1 + e*numpy.sin(numpy.radians(f))
+        zm = 1 - e*np.sin(np.radians(f))
+        zp = 1 + e*np.sin(np.radians(f))
         area_list.append(
-            numpy.pi * b**2 * (
-                numpy.log(zp/zm) / (2*e) +
-                numpy.sin(numpy.radians(f)) / (zp*zm)))
+            np.pi * b**2 * (
+                np.log(zp/zm) / (2*e) +
+                np.sin(np.radians(f)) / (zp*zm)))
     return pixel_size / 360. * (area_list[0]-area_list[1])
