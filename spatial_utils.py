@@ -28,3 +28,26 @@ def area_of_pixel(pixel_size, center_lat):
                 np.log(zp/zm) / (2*e) +
                 np.sin(np.radians(f)) / (zp*zm)))
     return pixel_size / 360. * (area_list[0]-area_list[1])
+
+def resample_raster(inputfile_path, referencefile_path, outputfile_path,band_num=1):
+             
+    input_raster = gdal.Open(inputfile_path, gdalconst.GA_ReadOnly)
+    input_band = input_raster.GetRasterBand(band_num)
+    inputProj = input_raster.GetProjection()
+    inputTrans = input_raster.GetGeoTransform()
+
+    reference = gdal.Open(referencefile_path, gdalconst.GA_ReadOnly)
+    referenceProj = reference.GetProjection()
+    referenceTrans = reference.GetGeoTransform()
+    bandreference = reference.GetRasterBand(1)    
+    x = reference.RasterXSize 
+    y = reference.RasterYSize
+
+    driver= gdal.GetDriverByName('GTiff')
+    output = driver.Create(outputfile_path,x,y,1,bandreference.DataType)
+    output.SetGeoTransform(referenceTrans)
+    output.SetProjection(referenceProj)
+
+    gdal.ReprojectImage(input_raster,output,inputProj,referenceProj,gdalconst.GRA_Bilinear)
+
+    del output
