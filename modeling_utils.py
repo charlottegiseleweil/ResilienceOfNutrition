@@ -146,13 +146,35 @@ def make_results_df(modelnm,X,y=None,y_2000=None):
 
         print('Saving model results for '+modelnm)
         compare = predictions_df(y_predicted,y,y_2000)
+
+        compare.to_csv('../Data/outputs/Model_results/2000/'+modelnm+'.csv')
+    
+    return compare
+
+def make_results_df_future(modelnm,X,y=None,y_2000=None):
+    
+    ## Check if exists already, just load the csv:
+    if (modelnm+'.csv') in os.listdir('../Data/outputs/Model_results/2000'):
+        compare = pd.read_csv('../Data/outputs/Model_results/2000/'+modelnm+'.csv')
+        compare = compare.set_index('pixel_id')
+
+    ## If not, make it and save it:
+    else:
+        print('Applying '+modelnm)
+        regression = load_regression(modelnm)
+        y_predicted = regression.predict(X)
+
+        print('Saving model results for '+modelnm)
+        compare = predictions_df(y_predicted,y,y_2000)
+        
         compare.to_csv('../Data/outputs/Model_results/2000/'+modelnm+'.csv')
     
     return compare
 
 
 def predictions_df(y_predicted,y=None,y_2000=None):
-    '''ça a l'air compliqué mais ça l'est pas'''
+    '''ça a l'air compliqué mais ça l'est pas
+    Works only for 2000 though'''
     
     compare = pd.DataFrame()
     
@@ -161,8 +183,8 @@ def predictions_df(y_predicted,y=None,y_2000=None):
         compare['cal_per_ha measured'] = compare['log(cal_per_ha) measured'].apply(lambda x: np.exp(x))
     
     if type(y_2000)==pd.core.series.Series:
-        compare['log(cal_per_ha) in 2000'] = y
-        compare['cal_per_ha in 2000'] = y.apply(lambda x: np.exp(x))      
+        compare['log(cal_per_ha) in 2000'] = y_2000
+        compare['cal_per_ha in 2000'] = y_2000.apply(lambda x: np.exp(x))      
     
     compare['log(cal_per_ha) predicted'] = y_predicted
     compare['cal_per_ha predicted'] = compare['log(cal_per_ha) predicted'].apply(lambda x: np.exp(x))
