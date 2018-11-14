@@ -122,3 +122,26 @@ def rasters_to_tabular_csv(rasters_paths,csv_name,
     print('Writing csv ' + csv_name)
     df_land.to_csv('../Data/intermediate/'+csv_name+'.csv')
 
+def netcdf_to_geotiff(base_raster_path,target_raster_path):
+    '''
+    base_raster_path should be in format : r'NETCDF:"path:dimension_name' 
+    
+    Converts ALL BANDS
+
+    '''
+    
+    gtiff_driver = gdal.GetDriverByName('GTiff')
+
+    raster = gdal.OpenEx(base_raster_path, gdal.OF_RASTER)
+
+    target_raster = gtiff_driver.CreateCopy(target_raster_path, raster)
+    
+    # I'm pretty sure this is useless, but didn't check:
+    #target_band = target_raster.GetRasterBand(band_num)
+    #target_band.XSize
+    #target_band.FlushCache()
+    #target_array = target_band.ReadAsArray()
+
+    #target_band = None
+    target_raster = None
+
