@@ -68,15 +68,35 @@ def export_raster(df,col_name,savefig=False):
     full_df = pd.merge(zeros_df, DF, left_index=True, right_on='pixel_id', how='outer')
     
     
+    values = full_df[col_name].as_matrix().reshape((2160, 4320)).astype(np.float32)
+
     ### to do transform df to array to raster
+    target_path = savefig
+    x_pixels = 4320  # = match.RasterXSize
+    y_pixels = 2160  # = match.RasterYSize
+    driver = gdal.GetDriverByName('GTiff')
+    output = driver.Create(target_path,x_pixels, y_pixels, 1 ,gdal.GDT_Float32)
+    output.GetRasterBand(1).WriteArray(values)
+
+    match = gdal.Open(match_raster)
+    proj = match.GetProjection()
+    geotrans = match.GetGeoTransform()
+    output.SetGeoTransform(geotrans)
+    output.SetProjection(proj)
+    output.FlushCache()
+    #output.GetRasterBand(1).SetNoDataValue(np.nan)
+    output=None
     
+
     
-    if savefig != False:
-        print('d')#save raster at savefig location
-    else:
-        pass
+    #if savefig != False:
+    #    print('Saving tif at '+ savefig)
+    #    plt.savefig(savefig,dpi=300)
+    #    pass
     
     return full_df
+
+#### Python Maps ####
     
 def visualize_two_maps(serie1, serie2,
                      savefig=False,colorscheme='diverging',
