@@ -6,6 +6,7 @@ import pandas as pd
 import gdal
 import pygeoprocessing
 
+
 def area_of_pixel(pixel_size, center_lat):
     """Calculate m^2 area of a wgs84 square pixel.
 
@@ -144,4 +145,44 @@ def netcdf_to_geotiff(base_raster_path,target_raster_path):
 
     #target_band = None
     target_raster = None
+
+
+import hazelbean as hb
+
+def warp_raster_preserving_sum(input_af_or_path, output_path, match_af_or_path, no_data_mode='exclude', gtiff_creation_options=hb.DEFAULT_GTIFF_CREATION_OPTIONS):
+    prior_logging_level = L.getEffectiveLevel()
+    L.setLevel(logging.WARN)
+    input_af = hb.input_flex_as_af(input_af_or_path)
+    match_af = hb.input_flex_as_af(match_af_or_path)
+
+    resample_method = 'bilinear'
+
+    L.info('Running warp_raster_preserving_sum')
+    L.info('input_af at ' + str(input_af.path) + ' has sum: ' + str(np.sum(input_af.data)))
+    temp_warp_path = hb.ruri(os.path.split(output_path)[0] + 'temp_warp.tif')
+    hb.warp_raster(input_af.path, (match_af.cell_size, -match_af.cell_size), temp_warp_path, resample_method=resample_method, gtiff_creation_options=gtiff_creation_options)
+
+    input_sum = np.sum(input_af.data.astype(np.float64))
+    temp_warp_sum = np.sum(hb.ArrayFrame(temp_warp_path).data.astype(np.float64))
+    resolution_multiplier = input_sum / temp_warp_sum
+    L.info('Multiplying warped geotiff by resolution_multiplier ' + str(resolution_multiplier))
+
+    hb.raster_calculator([(temp_warp_path, 1)], lambda x: x * resolution_multiplier, output_path, 7, -9999.0, gtiff_creation_options)
+
+    output_af = hb.ArrayFrame(output_path)
+    L.info('output_af at ' + str(output_af.path) + ' has sum: ' + str(np.sum(output_af.data)))
+
+    output_sum = np.sum(output_af.data)
+    error_rate =  input_sum / output_sum
+
+    L.info('Sum error rate: ' + str(error_rate))
+
+    if abs(1.0 - error_rate) > 0.000001:
+        L.critical('NON TRIVIAL summation different in warp_raster_preserving_sum. Error rate: ' + str(error_rate))
+
+    L.setLevel(prior_logging_level)
+
+    hb.remove_path(temp_warp_path)
+
+    return output_af
 
