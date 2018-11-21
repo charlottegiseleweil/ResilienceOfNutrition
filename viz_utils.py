@@ -58,7 +58,7 @@ def plot_R2_2params(param_x, param_color, xgb_tuning,scatter=False,savefig=None,
 ######### ######## ########
 
 def export_raster(df,col_name,savefig=False):
-    
+    '''export_as_tif'''
     #Make a zeros_df of length 9331200
     match_af = hb.ArrayFrame(match_raster)
     zeros_array = np.zeros(match_af.size)
