@@ -9,6 +9,8 @@ import seaborn as sns
 
 import hazelbean as hb
 
+import gdal
+
 match_raster = '../Data/inputs/Base/country_ids.tif'
 ## Compare models by R2 scores
 
@@ -57,7 +59,7 @@ def plot_R2_2params(param_x, param_color, xgb_tuning,scatter=False,savefig=None,
 
 ######### ######## ########
 
-def export_raster(df,col_name,savefig=False):
+def export_raster(df,col_name,savefig,full_df_return=False):
     '''export_as_tif'''
     #Make a zeros_df of length 9331200
     match_af = hb.ArrayFrame(match_raster)
@@ -86,15 +88,8 @@ def export_raster(df,col_name,savefig=False):
     output.FlushCache()
     #output.GetRasterBand(1).SetNoDataValue(np.nan)
     output=None
-    
-
-    
-    #if savefig != False:
-    #    print('Saving tif at '+ savefig)
-    #    plt.savefig(savefig,dpi=300)
-    #    pass
-    
-    return full_df
+ 
+    print('Exported raster at '+savefig)
 
 #### Python Maps ####
     
