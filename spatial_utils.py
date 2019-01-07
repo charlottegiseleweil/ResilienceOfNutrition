@@ -153,7 +153,7 @@ import hazelbean as hb
 
 def resample_raster_preserving_sum(input_raster,
                                    match_raster,
-                                   intermediate_raster, # Could remove this at the end. (or not even write raster-faster!) Would be cleaner
+                                   intermediate_raster, 
                                    output_raster):
     rasterArray = gdal_array.LoadFile(input_raster)
     # Replace ndv (-3.4028230607370965e+38) by 0 and sum population
