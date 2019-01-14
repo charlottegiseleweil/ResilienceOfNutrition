@@ -126,7 +126,8 @@ def fit_n_save_model2(DF_train,DF_test,
     results_df = results_df.append({'Model':model,
                                           'Validation_R2':R2_validation,
                                           'Validation_MSE':MSE_validation,
-                                         'inputs': inputs
+                                         'inputs': inputs,
+                                         'inputnm':inputnm,
                                          },ignore_index=True)
     return results_df
 

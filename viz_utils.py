@@ -14,7 +14,7 @@ import gdal
 match_raster = '../Data/inputs/Base/country_ids.tif'
 ## Compare models by R2 scores
 
-def plot_R2_2params(param_x, param_color, xgb_tuning,scatter=False,savefig=None,
+def plot_R2_2params(param_x, param_color,xgb_tuning,scatter=False,savefig=None,
                     ylim=None,title=None,figsize=(20,5),color_palette='Dark2'):
 
     fig, ax = plt.subplots(figsize=figsize)

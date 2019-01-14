@@ -19,7 +19,7 @@ def data_cleaning(df,log_cal=True):
     df['slope'] = df['slope'].apply(lambda x:x-90)
     df['slope'] = df['slope'].apply(lambda x:np.radians(-x))
 
-    for col in (['altitude', 'minutes_to_market','gdp_per_capita']+log_cal*['calories_per_ha']):
+    for col in ['altitude','GDP_pc']+log_cal*['calories_per_ha']:
         df[str('log_'+col)] = df[col].apply(lambda x: np.log(x) if x != 0 else 0)
         df = df.drop(col,axis=1)
 
@@ -37,5 +37,5 @@ def data_cleaning(df,log_cal=True):
         cols = df.columns.tolist()
         cols.insert(0, cols.pop(cols.index('log_calories_per_ha')))
         df = df.reindex(columns=cols)
-
+    
     return df
