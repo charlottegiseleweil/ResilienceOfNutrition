@@ -57,13 +57,13 @@ conda env remove -n food_sufficiency
 ```
 
 
-### Download the data
+## Download the data
 
 You can download the data from **Zenodo** following this link [INSERT LINK].
 
 Place the **data.zip** file in the **ResilienceOfNutrition** folder then unzip it.
 
-### Run the notebooks
+## Run the notebooks
 
 To run the notebooks, open a terminal window in the **ResilienceOfNutrition** folder.
 
