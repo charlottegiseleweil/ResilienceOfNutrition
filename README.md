@@ -90,42 +90,42 @@ In folder "Final":
 #### **Data_exploration.ipynb** 
 This notebook is used to explore the data distribution and the features, verify the aggregation assumption and categorize the GDP per capita.
 
-Inputs : ...
+* Inputs : ...
 
-Outputs ...
+* Outputs ...
 
 #### **Model_training.ipynb**
 Trains the model and run predictions on the future datasets.
 
 
-Inputs ...
+* Inputs ...
 
-Outputs ..
+* Outputs ..
 
 #### **Model_results.ipynb**
 Used to compute results of the model outputs: change in yields, production, etc.
 
 
-Inputs ...
+* Inputs ...
 
-Outputs ...
+* Outputs ...
 
-#### **sufficiency.ipynb** 
+#### **Sufficiency.ipynb** 
 Computes caloric sufficiency (global and country-scale) 
 
 
-Inputs:
+* Inputs:
 
 
-Outputs: sufficiency.csv 
+* Outputs: sufficiency.csv 
 
 #### **CtryCalSuff_in_perspective.ipynb** 
 
 Explores the country sufficiencies into perspective by adding related datasets: import independency, malnutrition, water security, GFSI and GNP per capita.
 
-Inputs: ...
+* Inputs: ...
 
-Outputs : ...
+* Outputs : ...
 
 
 ## Authors
