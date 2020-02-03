@@ -100,7 +100,7 @@ This notebook is used to explore the data distribution and the features, verify 
   * data/intermediate/Baseline_df_iterations/with_irrig/normalized_2000_gdp_cat_new.csv: the standardized data with categorized GDP per capita
   * data/intermediate/Baseline_df_iterations/with_irrig/clustered_2000_gdp_cat_new.csv: the clustered data points using K-means with categorized GDP per capita
   
-  * data/intermediate/Future_dfs/All_change+irrig/gdp_cont/clustered: the future data points clustered with respect to the current clusters
+  * data/intermediate/Future_dfs/All_change+irrig/gdp_cont/clustered/*: the future data points clustered with respect to the current clusters
   
   * data/intermediate/Future_dfs/All_change+irrig/gdp_cat_stat/original/*: the files with the future predicted features for each data point with categorized GDP per capita and their standardized equivalent (used later in the model)
   * data/intermediate/Future_dfs/All_change+irrig/gdp_cat_stat/clustered/*: the future data points clustered with respect to the current clusters with categorized GDP per capita
@@ -154,15 +154,15 @@ Explores the country sufficiencies into perspective by adding related datasets: 
 
 * Inputs:
   * data/outputs/related_datasets/sufficiencies_input.csv: a copy of the previously created country sufficiency file used as a baseline here
-  * data/outputs/related_datasets/Food_security/*: GFSI by country
-  * data/outputs/related_datasets/Food_security/GNP_WorldBank_2018/*: GNP per capita
-  * data/outputs/related_datasets/import_independency/Matti_Kummu_2019/shp_trade_dep.gpkg: import independency
+  * data/outputs/related_datasets/Food_security/*: GFSI by country data
+  * data/outputs/related_datasets/Food_security/GNP_WorldBank_2018/*: GNP per capita data
+  * data/outputs/related_datasets/import_independency/Matti_Kummu_2019/shp_trade_dep.gpkg: import independency data
   * data/outputs/related_datasets/Malnutrition/API_SH.STA.MALN.ZS_DS2_en_csv_v2_49604.csv: malnutrition data
   * data/outputs/related_datasets/Water_Security/GlobalWaterScarcity/*: water security data
 
 * Outputs :
   * data/outputs/related_datasets/sufficiencies_added_data.csv: the country sufficiencies with the added external data
-  * data/outputs/related_datasets/sufficiencies_full.csv: the country sufficiencies with extra data results and corresponding category
+  * data/outputs/related_datasets/sufficiencies_full.csv: the country sufficiencies with extra data, results and corresponding category
 
 
 ## Authors
