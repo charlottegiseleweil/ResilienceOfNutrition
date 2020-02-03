@@ -1,5 +1,7 @@
 # Resilience of food sufficiency to future climate and societal changes
 
+## Abstract
+
 Producing sufficient food to meet rising demand is a precondition to food security. While governance, trade, and social justice are critical dimensions of food access and thus food security, change in caloric sufficiency - adequate caloric supply to meet total demand - is a critical concern for resilience of the global food system in the face of climate and societal changes. Here we show, across five scenarios and assuming crop mix adaptation to new climate conditions, that global caloric sufficiency is likely to decrease, despite increased production, because those gains are outweighed by population growth. At a national scale, caloric sufficiency decreases consistently for most countries, and most countries facing hunger today remain vulnerable. Our results suggest that adapting crop mixes to new climate conditions will likely be insufficient to cope with global changes by 2050.
 
 
@@ -36,26 +38,11 @@ Install the **food_sufficiency** environment using:
 conda env create -f food_sufficiency.yml
 ```
 
-To activate the environment you can simply use
+To activate the environment:
 
 ```
 conda activate food_sufficiency
 ```
-
-and
-
-```
-conda deactivate
-```
-
-to return to your base environment.
-
-If you want to remove the environment, use:
-
-```
-conda env remove -n food_sufficiency
-```
-
 
 ## Download the data
 
@@ -97,11 +84,49 @@ jupyter notebook
 
 This command should open a new window in your prefered browser. If it does not, copy and past the link displayed in your terminal into your browser.
 
-* **Data_exploration** - Used to explore the data distribution and the features, verify the aggregation assumption and categorize the GDP per capita.
-* **Model_training** - Used to train the model and run predictions on the future datasets.
-* **Model_results** - Used to compute results of the model outputs: change in yields, production, etc.
-* **sufficiency** - Used to compute the global and country sufficiencies
-* **CtryCalSuff_in_perspective** - Put the country sufficiencies into perspective by adding related datasets such as import independency, malnutrition, water security, GFSI and GNP per capita.
+## Contents
+In folder "Final":
+
+#### **Data_exploration.ipynb** 
+This notebook is used to explore the data distribution and the features, verify the aggregation assumption and categorize the GDP per capita.
+
+Inputs : ...
+
+Outputs ...
+
+#### **Model_training.ipynb**
+Trains the model and run predictions on the future datasets.
+
+
+Inputs ...
+
+Outputs ..
+
+#### **Model_results.ipynb**
+Used to compute results of the model outputs: change in yields, production, etc.
+
+
+Inputs ...
+
+Outputs ...
+
+#### **sufficiency.ipynb** 
+Computes caloric sufficiency (global and country-scale) 
+
+
+Inputs:
+
+
+Outputs: sufficiency.csv 
+
+#### **CtryCalSuff_in_perspective.ipynb** 
+
+Explores the country sufficiencies into perspective by adding related datasets: import independency, malnutrition, water security, GFSI and GNP per capita.
+
+Inputs: ...
+
+Outputs : ...
+
 
 ## Authors
 
