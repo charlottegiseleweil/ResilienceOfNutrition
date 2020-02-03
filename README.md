@@ -65,9 +65,19 @@ Place the **data.zip** file in the **ResilienceOfNutrition** folder then unzip i
 
 ## Run the notebooks
 
-To run the notebooks, open a terminal window in the **ResilienceOfNutrition** folder.
+First, make sure to have the latest version of the code. Open a terminal window in the **ResilienceOfNutrition** folder then use:
 
-Make sure to navigate to the **Final** folder using:
+```
+git pull
+```
+
+Make sure to update the environment using:
+
+```
+conda env update -f food_sufficiency.yml
+```
+
+Navigate to the **Final** folder:
 
 ```
 cd Final
@@ -84,6 +94,8 @@ You can now access the notebooks using **Jupyter** with:
 ```
 jupyter notebook
 ```
+
+This command should open a new window in your prefered browser. If it does not, copy and past the link displayed in your terminal into your browser.
 
 * **Data_exploration** - Used to explore the data distribution and the features, verify the aggregation assumption and categorize the GDP per capita.
 * **Model_training** - Used to train the model and run predictions on the future datasets.
