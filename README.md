@@ -46,7 +46,7 @@ conda activate food_sufficiency
 
 ## Download the data
 
-You can download the data from **Zenodo** following this link (small issue with zenodo that we are fixing at the moment, you can download the data from google drive for the moment https://drive.google.com/file/d/149JGGi0olZLIYu110KRqGUXkaCVoivsR/view?usp=sharing).
+You can download the data from **Zenodo** following this link (small issue with zenodo that we are fixing at the moment, you can download the data from google drive for now https://drive.google.com/file/d/149JGGi0olZLIYu110KRqGUXkaCVoivsR/view?usp=sharing).
 
 Place the **data.zip** file in the **ResilienceOfNutrition** folder, then unzip it.
 
