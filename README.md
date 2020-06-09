@@ -46,9 +46,35 @@ conda activate food_sufficiency
 
 ## Download the data
 
-You can download the data from **Zenodo** following this link https://zenodo.org/record/3643209#.Xj2PkBNKjOR
+You can download the data from **Zenodo** following this link https://zenodo.org/record/3643209#.Xj2PkBNKjOR (make sure to use Version 2).
 
 Place the **data.zip** file in the **ResilienceOfNutrition** folder, then unzip it.
+
+The data is organized as follows:
+
+* inputs/
+  * Base: contains information about the pixels location (country, etc.).
+  * Diet: contains the diet data.
+  * irrigation: contains the irrigation data by scenario.
+  * LU: contains the land use by scenario.
+  * population: contains the population data.
+
+* intermediate/
+  * Baseline_df_iterations: contains the baseline files (2000 files).
+  * Future_dfs: contains the files of the future scenarios.
+
+* models/
+  Contains the model to predict the future yields.
+
+* outputs/with_irrig/
+  * model_output: contains the output of the model (future data with predicted yields).
+  * composite: contains aggregated outputs of the model (across the climate models).
+  * comapre: contains pixel wise changes information for each scenario.
+  * sufficiency: contains the sufficiency by country.
+
+* related_datasets/
+  Contains the additional datasets (trade, import, food security data, etc.).
+ 
 
 ## Run the notebooks
 
